@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Customer Information</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Customers Information</h1>
+    <h2>Orders Received: <span id="orders"></span></h2>
+    <h2>Total amount of orders: <span id="amount"></span></h2>
+    <h2 id="once"></h2>
+    <!-- 4. -->
+    <table class="darkTable">
+        <thead>
+            <tr>
+                <th>Number of Orders</th>
+                <th>Count of Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>5+</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- DivTable.com -->
+    <p>&nbsp;</p>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script type="module" src="./customerInfo.js" async defer></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "Customer order frequency"
+                },
+                axisY: {
+                    title: "Frequency"
+                },
+                data: [{
+                    type: "column",
+                    showInLegend: true,
+                    legendMarkerColor: "grey",
+                    legendText: "Customers",
+                    dataPoints: [
+                        { y: 11, label: "1 order" },
+                        { y: 9, label: "2 orders" },
+                        { y: 10, label: "3 orders" },
+                        { y: 8, label: "4 orders" },
+                        { y: 3, label: "More than 5 orders" },
+                    ]
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+</body>
+
+</html>
